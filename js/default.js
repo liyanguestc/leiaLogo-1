@@ -69,7 +69,7 @@
      //Add your objects here
      // var graph = new THREE.Mesh(new THREE.SphereGeometry(8, 30, 10), new   THREE.MeshLambertMaterial({color:0xffffff}));
      // scene.add(graph);
-     readSTLs('resource/leialogo.stl', '', '');
+     readSTLs('resource/leialogo2.stl', '', '');
      LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
  }
 
