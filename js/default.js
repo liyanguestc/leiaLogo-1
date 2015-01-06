@@ -4,6 +4,7 @@
  var mesh1;
  var sizeM = 45;
  var sizeMesh1 = sizeM;
+ var newMeshReady = false;
  head.ready(function() {
      Init();
      animate();
@@ -48,6 +49,11 @@
  function animate() {
      requestAnimationFrame(animate);
     // renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
+   if(newMeshReady === true){
+       mesh1.rotation.set(0.2 * Math.sin(3.2 * LEIA.time), 0 * Math.PI / 2, 0.25 * Math.sin(4 * LEIA.time));
+     mesh1.position.z = -2;
+   }
+   
      renderer.Leia_render({
          scene: scene,
          camera: camera,
