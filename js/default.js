@@ -53,7 +53,7 @@
        mesh1.rotation.set(0.2 * Math.sin(3.2 * LEIA.time), 0 * Math.PI / 2, 0.25 * Math.sin(4 * LEIA.time));
      mesh1.position.z = -2;
    }
-   
+
      renderer.Leia_render({
          scene: scene,
          camera: camera,
