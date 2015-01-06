@@ -34,6 +34,8 @@
          height: windowHeight,
          autoFit: true
      });
+     renderer.shadowMapEnabled = true;
+     renderer.shadowMapSoft = true;
      document.body.appendChild(renderer.domElement);
 
      //add object to Scene
@@ -75,16 +77,17 @@
 
  function addLights() {
      //Add Lights Here
-     var xl = new THREE.DirectionalLight(0x555555);
-     xl.position.set(1, 0, 2);
-     scene.add(xl);
-     var pl = new THREE.PointLight(0x111111);
-     pl.position.set(-20, 10, 20);
-     scene.add(pl);
-     var ambientLight = new THREE.AmbientLight(0x111111);
-     scene.add(ambientLight);
+     var light = new THREE.SpotLight(0xffffff);
+    //light.color.setHSL( Math.random(), 1, 0.5 );
+    light.position.set(0, 60, 60);
+    light.shadowCameraVisible = true;
+    light.castShadow = true;
+    light.shadowMapWidth = light.shadowMapHeight = 256;
+    light.shadowDarkness = 0.7;
+    scene.add(light);
 
-
+    var ambientLight = new THREE.AmbientLight(0x222222);
+    scene.add(ambientLight);
  }
 
  function readSTLs(filename1, filename2, filename3) {
