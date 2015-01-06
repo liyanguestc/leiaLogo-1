@@ -2,7 +2,7 @@
      windowHeight = window.innerHeight;
  var camera, renderer, scene;
  var mesh1;
- var sizeM = 45;
+ var sizeM = 30;
  var sizeMesh1 = sizeM;
  var newMeshReady = false;
  head.ready(function() {
@@ -51,7 +51,7 @@
     // renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
    if(newMeshReady === true){
        mesh1.rotation.set(0.2 * Math.sin(3.2 * LEIA.time), 0 * Math.PI / 2, 0.25 * Math.sin(4 * LEIA.time));
-     mesh1.position.z = -2;
+     mesh1.position.z = 3;
    }
 
      renderer.Leia_render({
@@ -70,6 +70,7 @@
      // var graph = new THREE.Mesh(new THREE.SphereGeometry(8, 30, 10), new   THREE.MeshLambertMaterial({color:0xffffff}));
      // scene.add(graph);
      readSTLs('resource/leialogo.stl', '', '');
+     LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
  }
 
  function addLights() {
@@ -112,3 +113,21 @@
      xhr1.responseType = "arraybuffer";
      xhr1.send(null);
  }
+
+function LEIA_setBackgroundPlane(filename, aspect) {
+    var foregroundPlaneTexture = new THREE.ImageUtils.loadTexture(filename);
+    foregroundPlaneTexture.wrapS = foregroundPlaneTexture.wrapT = THREE.RepeatWrapping;
+    foregroundPlaneTexture.repeat.set(1, 1);
+
+    //
+    var planeMaterial = new THREE.MeshPhongMaterial({
+        map: foregroundPlaneTexture,
+        color: 0xffdd99
+    });
+    var planeGeometry = new THREE.PlaneGeometry(80, 60, 10, 10);
+    plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    plane.position.z = -6;
+    plane.castShadow = false;
+    plane.receiveShadow = true;
+    scene.add(plane);
+}
