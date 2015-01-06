@@ -79,7 +79,7 @@
      //Add Lights Here
      var light = new THREE.SpotLight(0xffffff);
     //light.color.setHSL( Math.random(), 1, 0.5 );
-    light.position.set(0, 60, 60);
+    light.position.set(0, 100, 200);
     light.shadowCameraVisible = true;
     light.castShadow = true;
     light.shadowMapWidth = light.shadowMapHeight = 256;
