@@ -59,7 +59,7 @@
                //  curMeshGroup.rotation.set(0, 0, Math.PI / 2 * LEIA.time);
                  break;
              default:
-             //    curMeshGroup.rotation.set(0, 0, Math.PI / 2 * LEIA.time);
+                 curMeshGroup.rotation.set(0, 0, Math.PI / 2 * LEIA.time *0.2);
                  break;
          }
      }
@@ -127,7 +127,11 @@
       name: "menu1",
       positionX: -5,
       positionY: 0,
-      positionZ: 13
+      positionZ: 13,
+      rotateX: 0,
+      rotateY: 0,
+      rotateZ: 0
+      
     });
    
     addTextMenu({
@@ -135,7 +139,22 @@
       name: "menu2",
       positionX: -5,
       positionY: 0,
-      positionZ: -13
+      positionZ: -13,
+      rotateX: 0,
+      rotateY: 0,
+      rotateZ: 0
+      
+    });
+   
+   addTextMenu({
+      text: "Menu 3",
+      name: "menu3",
+      positionX: 0,
+      positionY: 0,
+      positionZ: 0,
+      rotateX: 0,
+      rotateY: 0,
+      rotateZ: 0
       
     });
 
@@ -164,11 +183,19 @@
    var posX = parameters.positionX;
    var posY = parameters.positionY;
    var posZ = parameters.positionZ;
+   var rotateX = parameters.rotateX;
+   var rotateY = parameters.rotateY;
+   var rotateZ = parameters.rotateZ;
    var name = parameters.name;
    if(posX === undefined || posY === undefined || posZ === undefined){
      posX = 0;
      posY = 0;
      posZ = 0;
+   }
+   if(rotateX === undefined || rotateY === undefined || rotateZ === undefined){
+     rotateX = 0;
+     rotateY = 0;
+     rotateZ = 0;
    }
    var menuGeometry = new THREE.TextGeometry(
         strText, {
@@ -199,6 +226,7 @@
     );
     var menuMesh = new THREE.Mesh(menuGeometry, menuMaterial);
     menuMesh.position.set(posX, posY, posZ);
+     menuMesh.rotation.set(rotateX, rotateY, rotateZ);
     var group = new THREE.Object3D();
     group.add(menuMesh);
     scene.add(group);
