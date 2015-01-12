@@ -52,11 +52,26 @@
  function animate() {
      requestAnimationFrame(animate);
     // renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
-  // if(newMeshReady === true){
-    //   mesh1.rotation.set(0.2 * Math.sin(3.2 * LEIA.time), 0 * Math.PI / 2, 0.25 * Math.sin(4 * LEIA.time));
-     //mesh1.position.z = 3;
-  // }
 
+     for(var i = 0;i < meshArray.length;i++){
+       var curMeshGroup = meshArray[i].meshGroup;
+       switch(meshArray[i].name){
+        // case 'Cube':
+          // curMesh.rotation.set(0.2 * Math.sin(3.2 * LEIA.time), 0 * Math.PI / 2, 0.25 * Math.sin(4 * LEIA.time));
+        //   break;
+          case 'TheTip':
+           // curMesh.translateY(0.2);
+            
+           
+            curMeshGroup.rotation.set(0,  0, Math.PI / 2 * LEIA.time);
+            break;
+         default:
+           //curMesh.rotation.set(0.2 * Math.sin(3.2 * LEIA.time),  Math.PI / 2, 0.25 * Math.sin(4 * LEIA.time));
+          // curMesh.rotation.set(Math.PI / 2 ,  0, 0);
+           break;
+           
+       }
+     }
      renderer.Leia_render({
          scene: scene,
          camera: camera,
@@ -70,10 +85,21 @@
 
  function addObjectsToScene() {
      //Add your objects here
-    addSTLModel('resource/Cube.stl','Cube',30,0,0,0);
-    addSTLModel('resource/SmallerSquares.stl','SmallerSquares',30,0,0,0);
-    addSTLModel('resource/SmallestSquares.stl','SmallestSquares',30,0,0,0);
-    addSTLModel('resource/TheTip.stl','TheTip',5,0,20,0);
+//    addSTLModel('resource/Cube.stl','Cube',30);
+//    addSTLModel('resource/SmallerSquares.stl','SmallerSquares',30);
+//    addSTLModel('resource/SmallestSquares.stl','SmallestSquares',30);
+   addSTLModel({
+     path: 'resource/TheTip.stl',
+     meshGroupName: 'TheTip',
+     meshSizeX: 5,
+     meshSizeY: 5,
+     meshSizeZ: 5,
+     translateX: 0,
+     translateY: 20,
+     translateZ: 0,
+     
+   });
+   // addSTLModel('resource/TheTip.stl','TheTip',5);
    //  LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
  }
 
@@ -92,7 +118,21 @@
     scene.add(ambientLight);
  }
 
- function addSTLModel(filename, meshName, meshSize,tx,ty,tz) {
+function addSTLModel(parameters){//(filename, meshName, meshSize) {
+     parameters = parameters || {};
+     var path = parameters.path;
+     var meshSizeX = parameters.meshSizeX;
+    var meshSizeY = parameters.meshSizeY;
+    var meshSizeZ = parameters.meshSizeZ;
+    var tx =  parameters.translateX;
+    var ty =  parameters.translateY;
+    var tz =  parameters.translateZ;
+    var meshName = parameters.meshGroupName;
+    if(parameters.meshSizeX === undefined || parameters.meshSizeY === undefined  || parameters.meshSizeZ === undefined ){
+      meshSizeX = 1;
+      meshSizeY = 1;
+      meshSizeZ = 1;
+    }
      var xhr1 = new XMLHttpRequest();
      xhr1.onreadystatechange = function() {
          if (xhr1.readyState == 4) {
@@ -104,11 +144,13 @@
                  mesh1.castShadow = true;
                  mesh1.receiveShadow = true;
                  mesh1.material.metal = true;
-
-                 mesh1.scale.set(meshSize, meshSize, meshSize);
+        
+                 mesh1.scale.set(meshSizeX, meshSizeY, meshSizeZ);
                  mesh1.position.set(tx, ty, tz);
-                 scene.add(mesh1);
-                 meshArray.push({mesh:mesh1,name:meshName});
+                 var group = new THREE.Object3D();
+                 group.add(mesh1);
+                 scene.add(group);
+                 meshArray.push({meshGroup:group,name:meshName});
                 // newMeshReady = true;
              }
          }
@@ -116,7 +158,7 @@
      xhr1.onerror = function(e) {
          console.log(e);
      };
-     xhr1.open("GET", filename, true);
+     xhr1.open("GET", path, true);
      xhr1.responseType = "arraybuffer";
      xhr1.send(null);
  }
