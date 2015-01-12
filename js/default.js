@@ -65,7 +65,6 @@
          default:
            curMeshGroup.rotation.set(0,  0, Math.PI / 2 * LEIA.time);
            break;
-           
        }
      }
      renderer.Leia_render({
