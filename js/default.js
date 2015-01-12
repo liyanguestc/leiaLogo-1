@@ -70,9 +70,6 @@
 
  function addObjectsToScene() {
      //Add your objects here
-     // var graph = new THREE.Mesh(new THREE.SphereGeometry(8, 30, 10), new   THREE.MeshLambertMaterial({color:0xffffff}));
-     // scene.add(graph);
-    // readSTLs('resource/leialogo2.stl', '', '');
     addSTLModel('resource/Cube.stl','Cube',30,0,0,0);
     addSTLModel('resource/SmallerSquares.stl','SmallerSquares',30,0,0,0);
     addSTLModel('resource/SmallestSquares.stl','SmallestSquares',30,0,0,0);
