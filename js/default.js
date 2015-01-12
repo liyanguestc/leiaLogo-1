@@ -63,7 +63,7 @@
            // curMesh.translateY(0.2);
             
            
-            curMeshGroup.rotation.set(0,  0, Math.PI / 2 * LEIA.time);
+         //   curMeshGroup.rotation.set(0,  0, Math.PI / 2 * LEIA.time);
             break;
          default:
            //curMesh.rotation.set(0.2 * Math.sin(3.2 * LEIA.time),  Math.PI / 2, 0.25 * Math.sin(4 * LEIA.time));
@@ -85,9 +85,40 @@
 
  function addObjectsToScene() {
      //Add your objects here
-//    addSTLModel('resource/Cube.stl','Cube',30);
-//    addSTLModel('resource/SmallerSquares.stl','SmallerSquares',30);
-//    addSTLModel('resource/SmallestSquares.stl','SmallestSquares',30);
+
+   addSTLModel({
+     path: 'resource/Cube.stl',
+     meshGroupName: 'Cube',
+     meshSizeX: 30,
+     meshSizeY: 30,
+     meshSizeZ: 30,
+     translateX: 0,
+     translateY: 0,
+     translateZ: 0,
+   });
+   
+   addSTLModel({
+     path: 'resource/SmallerSquares.stl',
+     meshGroupName: 'SmallerSquares',
+     meshSizeX: 30,
+     meshSizeY: 30,
+     meshSizeZ: 30,
+     translateX: 0,
+     translateY: 0,
+     translateZ: 0,
+   });
+   
+    addSTLModel({
+     path: 'resource/SmallestSquares.stl',
+     meshGroupName: 'SmallestSquares',
+     meshSizeX: 30,
+     meshSizeY: 35,
+     meshSizeZ: 30,
+     translateX: 0,
+     translateY: 0,
+     translateZ: 0,
+   });
+   
    addSTLModel({
      path: 'resource/TheTip.stl',
      meshGroupName: 'TheTip',
@@ -95,11 +126,10 @@
      meshSizeY: 5,
      meshSizeZ: 5,
      translateX: 0,
-     translateY: 20,
+     translateY: 22,
      translateZ: 0,
-     
    });
-   // addSTLModel('resource/TheTip.stl','TheTip',5);
+   
    //  LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
  }
 
