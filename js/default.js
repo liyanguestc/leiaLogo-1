@@ -73,10 +73,10 @@
      // var graph = new THREE.Mesh(new THREE.SphereGeometry(8, 30, 10), new   THREE.MeshLambertMaterial({color:0xffffff}));
      // scene.add(graph);
     // readSTLs('resource/leialogo2.stl', '', '');
-    addSTLModel('resource/Cube.stl','Cube',30);
-    addSTLModel('resource/SmallerSquares.stl','SmallerSquares',30);
-    addSTLModel('resource/SmallestSquares.stl','SmallestSquares',30);
-    addSTLModel('resource/TheTip.stl','TheTip',5);
+    addSTLModel('resource/Cube.stl','Cube',30,0,0,0);
+    addSTLModel('resource/SmallerSquares.stl','SmallerSquares',30,0,0,0);
+    addSTLModel('resource/SmallestSquares.stl','SmallestSquares',30,0,0,0);
+    addSTLModel('resource/TheTip.stl','TheTip',5,0,20,0);
    //  LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
  }
 
@@ -95,7 +95,7 @@
     scene.add(ambientLight);
  }
 
- function addSTLModel(filename, meshName, meshSize) {
+ function addSTLModel(filename, meshName, meshSize,tx,ty,tz) {
      var xhr1 = new XMLHttpRequest();
      xhr1.onreadystatechange = function() {
          if (xhr1.readyState == 4) {
@@ -109,6 +109,7 @@
                  mesh1.material.metal = true;
 
                  mesh1.scale.set(meshSize, meshSize, meshSize);
+                 mesh1.position.set(tx, ty, tz);
                  scene.add(mesh1);
                  meshArray.push({mesh:mesh1,name:meshName});
                 // newMeshReady = true;
