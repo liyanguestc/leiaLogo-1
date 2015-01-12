@@ -84,8 +84,8 @@
  }
 
  function addObjectsToScene() {
-     //Add your objects here
-
+   
+   //Add your objects here
    addSTLModel({
      path: 'resource/Cube.stl',
      meshGroupName: 'Cube',
