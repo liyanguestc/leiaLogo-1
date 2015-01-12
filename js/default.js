@@ -57,9 +57,11 @@
          switch (meshArray[i].name) {
              case 'TheTip':
                //  curMeshGroup.rotation.set(0, 0, Math.PI / 2 * LEIA.time);
+              curMeshGroup.rotation.set(0, Math.PI / 2 * LEIA.time *0.1, 0);
                  break;
              default:
-                 curMeshGroup.rotation.set(0, 0, Math.PI / 2 * LEIA.time *0.2);
+                // curMeshGroup.rotation.set(0, 0, Math.PI / 2 * LEIA.time *0.2);
+              curMeshGroup.rotation.set(0, Math.PI / 2 * LEIA.time *0.2, 0);
                  break;
          }
      }
@@ -135,27 +137,37 @@
     });
    
     addTextMenu({
-      text: "Menu 2",
-      name: "menu2",
-      positionX: -5,
+      text: "Menu 3",
+      name: "menu3",
+      positionX: 5,
       positionY: 0,
       positionZ: -13,
       rotateX: 0,
-      rotateY: 0,
+      rotateY: -Math.PI,
       rotateZ: 0
       
     });
    
    addTextMenu({
-      text: "Menu 3",
-      name: "menu3",
-      positionX: 0,
+      text: "Menu 2",
+      name: "menu2",
+      positionX: -13,
       positionY: 0,
-      positionZ: 0,
+      positionZ: -5,
       rotateX: 0,
-      rotateY: 0,
+      rotateY: -Math.PI / 2,
       rotateZ: 0
-      
+    });
+   
+   addTextMenu({
+      text: "Menu 4",
+      name: "menu4",
+      positionX: 13,
+      positionY: 0,
+      positionZ: 5,
+      rotateX: 0,
+      rotateY: Math.PI / 2,
+      rotateZ: 0
     });
 
      //  LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
@@ -226,7 +238,7 @@
     );
     var menuMesh = new THREE.Mesh(menuGeometry, menuMaterial);
     menuMesh.position.set(posX, posY, posZ);
-     menuMesh.rotation.set(rotateX, rotateY, rotateZ);
+    menuMesh.rotation.set(rotateX, rotateY, rotateZ);
     var group = new THREE.Object3D();
     group.add(menuMesh);
     scene.add(group);
