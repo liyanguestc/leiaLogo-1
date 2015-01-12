@@ -60,14 +60,10 @@
           // curMesh.rotation.set(0.2 * Math.sin(3.2 * LEIA.time), 0 * Math.PI / 2, 0.25 * Math.sin(4 * LEIA.time));
         //   break;
           case 'TheTip':
-           // curMesh.translateY(0.2);
-            
-           
-         //   curMeshGroup.rotation.set(0,  0, Math.PI / 2 * LEIA.time);
+            curMeshGroup.rotation.set(0,  0, Math.PI / 2 * LEIA.time);
             break;
          default:
-           //curMesh.rotation.set(0.2 * Math.sin(3.2 * LEIA.time),  Math.PI / 2, 0.25 * Math.sin(4 * LEIA.time));
-          // curMesh.rotation.set(Math.PI / 2 ,  0, 0);
+           curMeshGroup.rotation.set(0,  0, Math.PI / 2 * LEIA.time);
            break;
            
        }
