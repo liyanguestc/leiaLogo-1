@@ -28,6 +28,7 @@
          renderMode: _renderMode,
          shaderMode: _nShaderMode,
          colorMode: _colorMode,
+        compFac:_depthCompressionFactor,
          devicePixelRatio: 1
      });
      renderer.Leia_setSize({
@@ -271,7 +272,7 @@
                  mesh1.castShadow = true;
                  mesh1.receiveShadow = true;
                  mesh1.material.metal = true;
-
+                 mesh1.name = "LeiaMesh";
                  mesh1.scale.set(meshSizeX, meshSizeY, meshSizeZ);
                  mesh1.position.set(tx, ty, tz);
                  var group = new THREE.Object3D();
