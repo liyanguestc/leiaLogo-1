@@ -179,7 +179,7 @@
      var light = new THREE.SpotLight(0xffffff);
      //light.color.setHSL( Math.random(), 1, 0.5 );
      light.position.set(0, 100, 200);
-     light.shadowCameraVisible = true;
+     light.shadowCameraVisible = false;
      light.castShadow = true;
      light.shadowMapWidth = light.shadowMapHeight = 256;
      light.shadowDarkness = 0.7;
